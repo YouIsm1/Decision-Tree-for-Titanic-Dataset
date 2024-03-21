@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home page</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="form">
+                <h1>Titanic Prediction</h1>
+                <form action="{{ url_for('predict')}}" method="post">
+
+                    <label for="algorithme">Algorithm</label>
+                    <select name="algorithme" id="">
+                        <option value="">Choose algorithm</option>
+                        <option value="decisiontreegini">Decision tree gini</option>
+                        <option value="decisiontreeentropy">Decision tree entropy</option>
+                    </select><br>
+
+                    <label for="lesex">Sex</label>
+                    <select name="lesex" id="">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select><br>
+
+                    <label for="Survived">Survived</label>
+                    <select name="Survived" id="">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select><br>
+
+                    <label for="SibSp">SibSp</label>
+                    <input type="number" name="SibSp"><br>
+
+                    <label for="age">Age</label>
+                    <input type="number" name="age"><br>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <div class="res">
+                {% if message %}
+                    <h1> {{message}} </h1>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
